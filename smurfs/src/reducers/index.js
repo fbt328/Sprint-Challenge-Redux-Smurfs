@@ -1,3 +1,39 @@
+import { SMURFS_GET } from '../actions' /*get smurf data */
+import { SMURFS_POST } from '../actions' /*add new smurf */
+import { SMURFS_FETCHING } from "../actions";
+import { SMURFS_SUCCESS } from "../actions";
+import { SMURFS_FAILURE } from "../actions";
+
+const initialState = {
+  smurfs: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  // updatingSmurf: false,
+  // deletingSmurf: false,
+  error: null,
+};
+
+export const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SMURFS_GET:
+      return {...state, fetchingSmurfs: true};
+    case SMURFS_POST:
+      return {...state, addingSmurf: true};
+    case SMURFS_FETCHING:
+      return {...state, fetchingSmurfs: true};
+    case SMURFS_SUCCESS:
+      return {...state, fetchingSmurfs: false, smurfs: [...state.smurfs, ...action.payload]};
+    case SMURFS_FAILURE:
+      return {...state, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export default rootReducer
+
+
+
 /*
   Be sure to import in all of the action types from `../actions`
 */

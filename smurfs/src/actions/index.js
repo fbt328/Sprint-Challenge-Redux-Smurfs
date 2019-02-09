@@ -1,3 +1,33 @@
+import axios from 'axios';
+export const SMURFS_GET = 'SMURFS_GET'
+export const SMURFS_POST = 'SMURFS_POST'
+export const SMURFS_FETCHING = 'SMURFS_FETCHING'
+export const SMURFS_SUCCESS = 'SMURFS_SUCCESS'
+export const SMURFS_FAILURE = 'SMURFS_FAILURE'
+
+export const getSmurfs = () => dispatch => {
+  dispatch ({type: SMURFS_GET });
+  axios
+      .get(`http://localhost:3333/smurfs`)
+      .then(response =>
+          dispatch({type: SMURFS_SUCCESS, payload: response.data}))
+      .catch(err => dispatch({type: SMURFS_FAILURE, payload: err}))
+};
+
+// makes a new friend
+export const makeFriend = (addSmurf) =>dispatch => {
+  dispatch ({type: SMURFS_POST});
+  axios
+      .post(`http://localhost:3333/smurfs`)
+      .then(response =>
+          dispatch({type: SMURFS_SUCCESS, payload: response.data}))
+      .catch(err => dispatch({type: SMURFS_FAILURE, payload: err}))
+};
+
+
+
+
+
 /* 
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
