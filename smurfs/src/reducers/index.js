@@ -18,7 +18,8 @@ export const rootReducer = (state = initialState, action) => {
     case SMURFS_GET:
       return {...state, fetchingSmurfs: true};
     case SMURFS_POST:
-      return {...state, addingSmurf: true};
+    console.log(action.payload, 'post payload')
+      return {...state, addingSmurf: true, };
     case SMURFS_FETCHING:
       return {...state, fetchingSmurfs: true};
     case SMURFS_SUCCESS:

@@ -15,10 +15,10 @@ export const getSmurfs = () => dispatch => {
 };
 
 // makes a new friend
-export const makeFriend = (addSmurf) =>dispatch => {
+export const addSmurf = (smurfs) => dispatch => {
   dispatch ({type: SMURFS_POST});
   axios
-      .post(`http://localhost:3333/smurfs`)
+      .post(`http://localhost:3333/smurfs`, smurfs)
       .then(response =>
           dispatch({type: SMURFS_SUCCESS, payload: response.data}))
       .catch(err => dispatch({type: SMURFS_FAILURE, payload: err}))

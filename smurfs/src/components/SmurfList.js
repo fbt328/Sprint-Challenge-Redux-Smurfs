@@ -17,7 +17,7 @@ class SmurfList extends Component {
                 {this.props.smurfs.map(smurf => 
                  <Smurf
                     smurf={smurf}
-                    key={smurf.id} />
+                    key={Math.random()} />
                     )
                 }
                 
